@@ -23,6 +23,8 @@ https://github.com/sOmEoNe2lOvEgIt/slurm_conf.git
 
 This last repo holds the conf of all of the slurm daemons. If you want to use your own to add/remove nodes or simply change the conf, you may change all of the slurm conf folders in each of the slurm daemons folders. The slurm conf is always located in the etc folder. You dont have to touch the pull_conf script as it will stil function normally if your folder tree is correct.
 
+DO NOT FORGET TO START THE PULL CONF SCRIPT, IT WILL UPDATE THE CONF AS THE SAME ONE ON EVERY DAEMON WHICH IS NECESSARY FOR SLURM TO WORK!
+
 ### What do you do?
 Ok! Now that you have all that you need, you will need to update the paths of the shared volumes in the docker compose file as theses are hard coded into the file and your path may vary depending in wich folder you put the repo in.
 
