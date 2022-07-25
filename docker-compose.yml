@@ -26,9 +26,22 @@ services:
     volumes:
       - ./elasticsearch-data:/usr/share/elasticsearch/data
 
+  kibana:
+    restart: always
+    image: docker.elastic.co/kibana/kibana:8.3.2
+    container_name: kibana
+    networks:
+      - elastic
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elastic
+    volumes:
+      - ./kibana-data:/usr/share/kibana/data
+
   mariadb:
     depends_on:
-      elastic:
+      kibana:
         condition: service_started
     healthcheck:
       test: ["CMD", "mysql", "--version"]
@@ -129,19 +142,6 @@ services:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
       - ./plugin/job_submit_node_limit.so:/usr/lib64/slurm/job_submit_node_limit.so
     hostname: slurm_node4
-
-  kibana:
-    restart: always
-    image: docker.elastic.co/kibana/kibana:8.3.2
-    container_name: kibana
-    networks:
-      - elastic
-    ports:
-      - "5601:5601"
-    depends_on:
-      - elastic
-    volumes:
-      - ./kibana-data:/usr/share/kibana/data
 
 networks:
   slurm-network:
