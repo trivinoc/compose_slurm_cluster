@@ -1,0 +1,150 @@
+version: '3'
+
+services:
+
+  elastic:
+    restart: always
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.3.2
+    container_name: elasticsearch
+    networks:
+      - elastic
+    ports:
+      - "9200:9200"
+    environment:
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+      - ELASTIC_PASSWORD=elastic
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - ./elasticsearch-data:/usr/share/elasticsearch/data
+
+  mariadb:
+    depends_on:
+      elastic:
+        condition: service_started
+    healthcheck:
+      test: ["CMD", "mysql", "--version"]
+      interval: 2s
+      timeout: 2s
+      retries: 5
+      start_period: 2s
+    image: mariadb:latest
+    container_name: slurm_mariadb
+    networks:
+      - slurm-network
+    volumes:
+      - /home/docker_slurm/mariadb_docker/database:/var/lib/mysql
+    environment:
+      - MARIADB_USER=slurm-user
+      - MARIADB_PASSWORD=slurm
+      - MARIADB_ROOT_PASSWORD=suslurm
+
+  slurm_dbd:
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    image: slurm_db_daemon
+    container_name: slurm_db_daemon
+    networks:
+      - slurm-network
+    volumes:
+      - /home/docker_slurm/slurm_db_daemon_docker/etc/slurm_conf:/etc/slurm
+      - /home/docker_slurm/plugin/job_submit_node_limit.so:/usr/lib64/slurm/job_submit_node_limit.so
+    hostname: slurm_db_daemon
+  
+  slurm_head:
+    depends_on:
+      slurm_dbd:
+        condition: service_started
+    image: slurm_head
+    container_name: slurm_head
+    networks:
+      - slurm-network
+      - elastic
+    volumes:
+      - /home/docker_slurm/slurm_head_docker/etc/slurm_conf:/etc/slurm
+      - /home/docker_slurm/plugin/job_submit_node_limit.so:/usr/lib64/slurm/job_submit_node_limit.so
+    hostname: slurm_controller_daemon
+  
+  slurm_node1:
+    depends_on:
+      slurm_head:
+        condition: service_started
+    image: slurm_node
+    container_name: slurm_node1
+    networks:
+      - slurm-network
+    volumes:
+      - /home/docker_slurm/slurm_node/etc/slurm_conf:/etc/slurm
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /home/docker_slurm/plugin/job_submit_node_limit.so:/usr/lib64/slurm/job_submit_node_limit.so
+    hostname: slurm_node1
+  
+  slurm_node2:
+    depends_on:
+      slurm_head:
+        condition: service_started
+    image: slurm_node
+    container_name: slurm_node2
+    networks:
+      - slurm-network
+    volumes:
+      - /home/docker_slurm/slurm_node/etc/slurm_conf:/etc/slurm
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /home/docker_slurm/plugin/job_submit_node_limit.so:/usr/lib64/slurm/job_submit_node_limit.so
+    hostname: slurm_node2
+  
+  slurm_node3:
+    depends_on:
+      slurm_head:
+        condition: service_started
+    image: slurm_node
+    container_name: slurm_node3
+    networks:
+      - slurm-network
+    volumes:
+      - /home/docker_slurm/slurm_node/etc/slurm_conf:/etc/slurm
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /home/docker_slurm/plugin/job_submit_node_limit.so:/usr/lib64/slurm/job_submit_node_limit.so
+    hostname: slurm_node3
+  
+  slurm_node4:
+    depends_on:
+      slurm_head:
+        condition: service_started
+    image: slurm_node
+    container_name: slurm_node4
+    networks:
+      - slurm-network
+    volumes:
+      - /home/docker_slurm/slurm_node/etc/slurm_conf:/etc/slurm
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /home/docker_slurm/plugin/job_submit_node_limit.so:/usr/lib64/slurm/job_submit_node_limit.so
+    hostname: slurm_node4
+
+  kibana:
+    restart: always
+    image: docker.elastic.co/kibana/kibana:8.3.2
+    container_name: kibana
+    networks:
+      - elastic
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elastic
+    volumes:
+      - ./kibana-data:/usr/share/kibana/data
+
+networks:
+  slurm-network:
+    driver: bridge
+  elastic:
+    driver: bridge
