@@ -7,7 +7,7 @@ It also contains a readme that gives you instructions on how to use it and some 
 
 ## What to do?
 ### What you need:
-First thing you wil want to do is download/clone all of theses repos in this folder:
+First thing you will want to do is download/clone all of theses repos in this folder:
 
 https://github.com/sOmEoNe2lOvEgIt/mariadb_docker.git
 
