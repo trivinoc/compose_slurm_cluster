@@ -41,7 +41,7 @@ services:
     networks:
       - slurm-network
     volumes:
-      - /home/docker_slurm/mariadb_docker/database:/var/lib/mysql
+      - ./mariadb_docker/database:/var/lib/mysql
     environment:
       - MARIADB_USER=slurm-user
       - MARIADB_PASSWORD=slurm
@@ -56,8 +56,8 @@ services:
     networks:
       - slurm-network
     volumes:
-      - /home/docker_slurm/slurm_db_daemon_docker/etc/slurm_conf:/etc/slurm
-      - /home/docker_slurm/plugin/job_submit_node_limit.so:/usr/lib64/slurm/job_submit_node_limit.so
+      - ./slurm_db_daemon_docker/etc/slurm_conf:/etc/slurm
+      - ./plugin/job_submit_node_limit.so:/usr/lib64/slurm/job_submit_node_limit.so
     hostname: slurm_db_daemon
   
   slurm_head:
@@ -70,8 +70,8 @@ services:
       - slurm-network
       - elastic
     volumes:
-      - /home/docker_slurm/slurm_head_docker/etc/slurm_conf:/etc/slurm
-      - /home/docker_slurm/plugin/job_submit_node_limit.so:/usr/lib64/slurm/job_submit_node_limit.so
+      - ./slurm_head_docker/etc/slurm_conf:/etc/slurm
+      - ./plugin/job_submit_node_limit.so:/usr/lib64/slurm/job_submit_node_limit.so
     hostname: slurm_controller_daemon
   
   slurm_node1:
@@ -83,9 +83,9 @@ services:
     networks:
       - slurm-network
     volumes:
-      - /home/docker_slurm/slurm_node/etc/slurm_conf:/etc/slurm
+      - ./slurm_node/etc/slurm_conf:/etc/slurm
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-      - /home/docker_slurm/plugin/job_submit_node_limit.so:/usr/lib64/slurm/job_submit_node_limit.so
+      - ./plugin/job_submit_node_limit.so:/usr/lib64/slurm/job_submit_node_limit.so
     hostname: slurm_node1
   
   slurm_node2:
@@ -97,9 +97,9 @@ services:
     networks:
       - slurm-network
     volumes:
-      - /home/docker_slurm/slurm_node/etc/slurm_conf:/etc/slurm
+      - ./slurm_node/etc/slurm_conf:/etc/slurm
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-      - /home/docker_slurm/plugin/job_submit_node_limit.so:/usr/lib64/slurm/job_submit_node_limit.so
+      - ./plugin/job_submit_node_limit.so:/usr/lib64/slurm/job_submit_node_limit.so
     hostname: slurm_node2
   
   slurm_node3:
@@ -111,9 +111,9 @@ services:
     networks:
       - slurm-network
     volumes:
-      - /home/docker_slurm/slurm_node/etc/slurm_conf:/etc/slurm
+      - ./slurm_node/etc/slurm_conf:/etc/slurm
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-      - /home/docker_slurm/plugin/job_submit_node_limit.so:/usr/lib64/slurm/job_submit_node_limit.so
+      - ./plugin/job_submit_node_limit.so:/usr/lib64/slurm/job_submit_node_limit.so
     hostname: slurm_node3
   
   slurm_node4:
@@ -125,9 +125,9 @@ services:
     networks:
       - slurm-network
     volumes:
-      - /home/docker_slurm/slurm_node/etc/slurm_conf:/etc/slurm
+      - ./slurm_node/etc/slurm_conf:/etc/slurm
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-      - /home/docker_slurm/plugin/job_submit_node_limit.so:/usr/lib64/slurm/job_submit_node_limit.so
+      - ./plugin/job_submit_node_limit.so:/usr/lib64/slurm/job_submit_node_limit.so
     hostname: slurm_node4
 
   kibana:
