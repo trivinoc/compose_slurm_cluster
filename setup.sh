@@ -14,6 +14,7 @@ mkdir kibana-data
 chmod 777 kibana-data
 chown 999 kibana-data
 mkdir elasticsearch-data
+mkdir node_logs
 chmod 777 elasticsearch-data
 chown 999 elasticsearch-data
 echo -e "\033[0;32m######_End creating necessary dirs_######\033[0;0m"
