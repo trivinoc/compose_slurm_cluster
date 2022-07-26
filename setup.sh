@@ -1,9 +1,9 @@
 echo -e "\033[0;32m###########_Start conf clone_###########\033[0;0m"
-cd slurm_db_daemon_docker/etc && git clone git@github.com:sOmEoNe2lOvEgIt/slurm_conf.git
+cd slurm_db_daemon_docker/etc && git clone https://github.com/sOmEoNe2lOvEgIt/slurm_conf.git
 cd ../../
-cd slurm_head_docker/etc && git clone git@github.com:sOmEoNe2lOvEgIt/slurm_conf.git
+cd slurm_head_docker/etc && git clone https://github.com/sOmEoNe2lOvEgIt/slurm_conf.git
 cd ../../
-cd slurm_node/etc && git clone git@github.com:sOmEoNe2lOvEgIt/slurm_conf.git
+cd slurm_node/etc && git clone https://github.com/sOmEoNe2lOvEgIt/slurm_conf.git
 cd ../../
 echo -e "\033[0;32m###########_End conf clone_###########\033[0;0m"
 echo -e "\033[0;32m###########_Start pull conf_###########\033[0;0m"
