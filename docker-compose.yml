@@ -99,7 +99,6 @@ services:
       - slurm-network
     volumes:
       - ./slurm_node/etc/slurm_conf:/etc/slurm
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
       - ./plugin/job_submit_node_limit.so:/usr/lib64/slurm/job_submit_node_limit.so
       - ./node_logs:/node_logs
     hostname: slurm_node1
@@ -114,7 +113,6 @@ services:
       - slurm-network
     volumes:
       - ./slurm_node/etc/slurm_conf:/etc/slurm
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
       - ./plugin/job_submit_node_limit.so:/usr/lib64/slurm/job_submit_node_limit.so
       - ./node_logs:/node_logs
     hostname: slurm_node2
@@ -129,7 +127,6 @@ services:
       - slurm-network
     volumes:
       - ./slurm_node/etc/slurm_conf:/etc/slurm
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
       - ./plugin/job_submit_node_limit.so:/usr/lib64/slurm/job_submit_node_limit.so
       - ./node_logs:/node_logs
     hostname: slurm_node3
@@ -144,7 +141,6 @@ services:
       - slurm-network
     volumes:
       - ./slurm_node/etc/slurm_conf:/etc/slurm
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
       - ./plugin/job_submit_node_limit.so:/usr/lib64/slurm/job_submit_node_limit.so
       - ./node_logs:/node_logs
     hostname: slurm_node4
