@@ -17,5 +17,6 @@ mkdir elasticsearch-data
 mkdir node_logs
 chmod 777 elasticsearch-data
 chown 999 elasticsearch-data
+mkdir nodes_cgroups/ && mkdir nodes_cgroups/node_1 && mkdir nodes_cgroups/node_2 && mkdir nodes_cgroups/node_3 && mkdir nodes_cgroups/node_4
 echo -e "\033[0;32m######_End creating necessary dirs_######\033[0;0m"
 #./build_all_images.sh

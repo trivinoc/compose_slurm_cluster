@@ -6,3 +6,4 @@ slurm_db_daemon_docker
 slurm_head_docker
 slurm_node
 node_logs
+nodes_cgroups

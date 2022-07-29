@@ -101,7 +101,11 @@ services:
       - ./slurm_node/etc/slurm_conf:/etc/slurm
       - ./plugin/job_submit_node_limit.so:/usr/lib64/slurm/job_submit_node_limit.so
       - ./node_logs:/node_logs
+      - ./nodes_cgroups/node_1:/cgroup,type cgroup,rw
     hostname: slurm_node1
+    #stdin_open: true
+    #tty: true
+    privileged: true
   
   slurm_node2:
     depends_on:
@@ -115,7 +119,9 @@ services:
       - ./slurm_node/etc/slurm_conf:/etc/slurm
       - ./plugin/job_submit_node_limit.so:/usr/lib64/slurm/job_submit_node_limit.so
       - ./node_logs:/node_logs
+      - ./nodes_cgroups/node_1:/cgroup,type cgroup,rw
     hostname: slurm_node2
+    privileged: true
   
   slurm_node3:
     depends_on:
@@ -129,7 +135,9 @@ services:
       - ./slurm_node/etc/slurm_conf:/etc/slurm
       - ./plugin/job_submit_node_limit.so:/usr/lib64/slurm/job_submit_node_limit.so
       - ./node_logs:/node_logs
+      - ./nodes_cgroups/node_1:/cgroup,type cgroup,rw
     hostname: slurm_node3
+    privileged: true
   
   slurm_node4:
     depends_on:
@@ -143,7 +151,9 @@ services:
       - ./slurm_node/etc/slurm_conf:/etc/slurm
       - ./plugin/job_submit_node_limit.so:/usr/lib64/slurm/job_submit_node_limit.so
       - ./node_logs:/node_logs
+      - ./nodes_cgroups/node_1:/cgroup,type cgroup,rw
     hostname: slurm_node4
+    privileged: true
 
 networks:
   slurm-network:
