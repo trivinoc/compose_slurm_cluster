@@ -2,48 +2,48 @@ version: '3'
 
 services:
 
-  # elastic:
-  #   restart: always
-  #   image: docker.elastic.co/elasticsearch/elasticsearch:8.3.2
-  #   container_name: elasticsearch
-  #   networks:
-  #     - elastic
-  #   ports:
-  #     - "9200:9200"
-  #   environment:
-  #     - xpack.security.enabled=false
-  #     - discovery.type=single-node
-  #     - ELASTIC_PASSWORD=elastic
-  #     - logger.level=WARN
-  #   ulimits:
-  #     memlock:
-  #       soft: -1
-  #       hard: -1
-  #     nofile:
-  #       soft: 65536
-  #       hard: 65536
-  #   cap_add:
-  #     - IPC_LOCK
-  #   volumes:
-  #     - ./elasticsearch-data:/usr/share/elasticsearch/data
+  elastic:
+    restart: always
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.3.2
+    container_name: elasticsearch
+    networks:
+      - elastic
+    ports:
+      - "9200:9200"
+    environment:
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+      - ELASTIC_PASSWORD=elastic
+      - logger.level=WARN
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - ./elasticsearch-data:/usr/share/elasticsearch/data
 
-  # kibana:
-  #   restart: always
-  #   image: docker.elastic.co/kibana/kibana:8.3.2
-  #   container_name: kibana
-  #   networks:
-  #     - elastic
-  #   ports:
-  #     - "5601:5601"
-  #   depends_on:
-  #     - elastic
-  #   volumes:
-  #     - ./kibana-data:/usr/share/kibana/data
+  kibana:
+    restart: always
+    image: docker.elastic.co/kibana/kibana:8.3.2
+    container_name: kibana
+    networks:
+      - elastic
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elastic
+    volumes:
+      - ./kibana-data:/usr/share/kibana/data
 
   mariadb:
-    # depends_on:
-    #   kibana:
-    #     condition: service_started
+    depends_on:
+      kibana:
+        condition: service_started
     healthcheck:
       test: ["CMD", "mysql", "--version"]
       interval: 2s
