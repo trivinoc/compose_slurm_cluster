@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-
+  
   elastic:
     restart: always
     image: docker.elastic.co/elasticsearch/elasticsearch:8.3.2
@@ -10,6 +10,7 @@ services:
       - elastic
     ports:
       - "9200:9200"
+      - "9300:9300"
     environment:
       - xpack.security.enabled=false
       - discovery.type=single-node
@@ -26,6 +27,11 @@ services:
       - IPC_LOCK
     volumes:
       - ./elasticsearch-data:/usr/share/elasticsearch/data
+    healthcheck:
+      test: curl -u elastic:elastic -s -f elasticsearch:9200/_cat/health >/dev/null || exit 1
+      interval: 15s
+      timeout: 3s
+      retries: 5
 
   kibana:
     restart: always
@@ -78,6 +84,8 @@ services:
     depends_on:
       slurm_dbd:
         condition: service_started
+      elastic:
+        condition: service_healthy
     image: slurm_head
     container_name: slurm_head
     networks:
@@ -87,6 +95,7 @@ services:
       - ./slurm_head_docker/etc/slurm_conf:/etc/slurm
       - ./plugin/job_submit_node_limit.so:/usr/lib64/slurm/job_submit_node_limit.so
       - ./node_logs:/node_logs
+      - ./shared:/shared_scripts
     hostname: slurm_controller_daemon
     privileged: true
   

@@ -7,3 +7,5 @@ slurm_head_docker
 slurm_node
 node_logs
 nodes_cgroups
+slurm_rpm
+shared
