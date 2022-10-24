@@ -40,7 +40,7 @@ systemctl status docker
 
 Now, theoricaly, you can start up the cluster by going to the root of the repository, then run the command 
 ```
-docker compose up
+docker-compose up
 ```
 It should cleany start everything. If it does not, try checking the previous steps.
 
