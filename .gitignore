@@ -1,5 +1,4 @@
 elasticsearch-data
 kibana-data
-mariadb_docker
 node_logs
 nodes_cgroups
