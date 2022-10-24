@@ -24,7 +24,7 @@ You may want to then, restart the docker service.
 
 * Then, download/clone this repo, it will hold all of your cluster's dockerfiles, shared folders, etc...
 ```
-git clone https://github.com/sOmEoNe2lOvEgIt/compose_slurm_cluster.git
+git clone https://github.com/trivinoc/compose_slurm_cluster.git
 ```
 
 * Finally, you will want to download/clone all of theses repos iside the previously cloned folder:
@@ -32,15 +32,15 @@ git clone https://github.com/sOmEoNe2lOvEgIt/compose_slurm_cluster.git
 ```
 cd ./compose_slurm_cluster
 
-git clone https://github.com/sOmEoNe2lOvEgIt/mariadb_docker.git
+git clone https://github.com/trivinoc/mariadb_docker.git
 
-git clone https://github.com/sOmEoNe2lOvEgIt/slurm_node_docker.git
+git clone https://github.com/trivinoc/slurm_node_docker.git
 
-git clone https://github.com/sOmEoNe2lOvEgIt/slurm_controller_docker.git
+git clone https://github.com/trivinoc/slurm_controller_docker.git
 
-git clone https://github.com/sOmEoNe2lOvEgIt/slurm_db_docker.git
+git clone https://github.com/trivinoc/slurm_db_docker.git
 
-git clone https://github.com/sOmEoNe2lOvEgIt/slurm_conf.git
+git clone https://github.com/trivinoc/slurm_conf.git
 ```
 
 This last repo holds the conf of all of the slurm daemons.
