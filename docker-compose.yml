@@ -11,8 +11,7 @@ services:
       - slurm-network
     volumes:
       - ./mariadb_docker/database:/var/lib/mysql
-    logging:
-        driver: none
+
     healthcheck:
       test: ["CMD", "mysql", "--version"]
       interval: 2s
@@ -37,8 +36,7 @@ services:
     volumes:
       - ./slurm_conf:/etc/slurm
     hostname: slurm_db
-    logging:
-        driver: none
+
 
   slurm_head:
     depends_on:
@@ -67,8 +65,7 @@ services:
       - ./shared:/shared
     hostname: slurm_node1
     privileged: true
-    logging:
-        driver: none
+
 
   slurm_node2:
     depends_on:
@@ -83,8 +80,7 @@ services:
       - ./shared:/shared
     hostname: slurm_node2
     privileged: true
-    logging:
-        driver: none
+
 
   slurm_node3:
     depends_on:
@@ -99,8 +95,7 @@ services:
       - ./shared:/shared
     hostname: slurm_node3
     privileged: true
-    logging:
-        driver: none
+
 
   slurm_node4:
     depends_on:
@@ -115,8 +110,7 @@ services:
       - ./shared:/shared
     hostname: slurm_node4
     privileged: true
-    logging:
-        driver: none
+
 
 networks:
   slurm-network:
