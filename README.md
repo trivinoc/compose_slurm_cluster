@@ -34,11 +34,11 @@ cd ./compose_slurm_cluster
 
 git clone https://github.com/sOmEoNe2lOvEgIt/mariadb_docker.git
 
-git clone https://github.com/sOmEoNe2lOvEgIt/slurm_node.git
+git clone https://github.com/sOmEoNe2lOvEgIt/slurm_node_docker.git
 
-git clone https://github.com/sOmEoNe2lOvEgIt/slurm_head_docker.git
+git clone https://github.com/sOmEoNe2lOvEgIt/slurm_controller_docker.git
 
-git clone https://github.com/sOmEoNe2lOvEgIt/slurm_db_daemon_docker.git
+git clone https://github.com/sOmEoNe2lOvEgIt/slurm_db_docker.git
 
 git clone https://github.com/sOmEoNe2lOvEgIt/slurm_conf.git
 ```
