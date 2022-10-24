@@ -9,9 +9,9 @@ It also contains a readme that gives you instructions on how to use it and some 
 ### What you need:
 
 First thing you will want to do is edit the docker service file (mine is located at "/etc/systemd/system/multi-user.target.wants/docker.service", idk about you tho...) and change the "ExecStart" var value to
-'''
+```
 ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --exec-opt native.cgroupdriver=systemd
-'''
+```
 It will tell docker to use Cgroup which is needed by the differents slurm containers.
 You may want to then, restart the docker service.
 
@@ -19,7 +19,7 @@ Then, download/clone this repo, it will hold all of your cluster's dockerfiles, 
 
 Finally, you will want to download/clone all of theses repos iside the previously cloned folder:
 
-'''
+```
 git clone https://github.com/sOmEoNe2lOvEgIt/mariadb_docker.git
 
 git clone https://github.com/sOmEoNe2lOvEgIt/slurm_node.git
@@ -29,7 +29,7 @@ git clone https://github.com/sOmEoNe2lOvEgIt/slurm_head_docker.git
 git clone https://github.com/sOmEoNe2lOvEgIt/slurm_db_daemon_docker.git
 
 git clone https://github.com/sOmEoNe2lOvEgIt/slurm_conf.git
-'''
+```
 
 This last repo holds the conf of all of the slurm daemons.
 
