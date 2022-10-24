@@ -8,6 +8,13 @@ It also contains a readme that gives you instructions on how to use it and some 
 ## What to do?
 ### What you need:
 
+### System requirements:
+  docker, docker compose 1.29.2 at least, Cgroup
+  
+  10GB of storage
+  
+  At least 8GB of ram
+
 First thing you will want to do is edit the docker service file (mine is located at "/etc/systemd/system/multi-user.target.wants/docker.service", idk about you tho...) and change the "ExecStart" var value to
 ```
 ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --exec-opt native.cgroupdriver=systemd
