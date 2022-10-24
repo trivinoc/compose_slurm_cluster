@@ -54,7 +54,7 @@ services:
 
   slurm_node1:
     depends_on:
-      slurm_head:
+      slurm_controller:
         condition: service_started
     image: slurm_node
     container_name: slurm_node1
@@ -69,7 +69,7 @@ services:
 
   slurm_node2:
     depends_on:
-      slurm_head:
+      slurm_controller:
         condition: service_started
     image: slurm_node
     container_name: slurm_node2
@@ -84,7 +84,7 @@ services:
 
   slurm_node3:
     depends_on:
-      slurm_head:
+      slurm_controller:
         condition: service_started
     image: slurm_node
     container_name: slurm_node3
@@ -99,7 +99,7 @@ services:
 
   slurm_node4:
     depends_on:
-      slurm_head:
+      slurm_controller:
         condition: service_started
     image: slurm_node
     container_name: slurm_node4
