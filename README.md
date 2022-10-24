@@ -39,8 +39,14 @@ git clone https://github.com/sOmEoNe2lOvEgIt/slurm_conf.git
 This last repo holds the conf of all of the slurm daemons.
 
 Make sure that the docker service is running on your machine.
+```
+systemctl status docker
+```
 
 DO NOT FORGET TO LAUNCH THE BUILD IMAGE SCRIPT!! IT WILL BUILD ALL IMAGES FROM THE DOCKERFILE NEEDED BY THE DOCKER COMPOSE!
+```
+./build_all_images.sh
+```
 
 ## Good job!
 
