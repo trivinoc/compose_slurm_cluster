@@ -5,7 +5,6 @@ This repo holds the docker compose file to create a slurm cluster in a docker co
 It also contains a readme that gives you instructions on how to use it and some qof scripts.
 
 
-## What to do?
 ### **System requirements:**
   * docker, docker compose 1.29.2 at least, Cgroup
   
