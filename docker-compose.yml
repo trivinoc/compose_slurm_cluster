@@ -2,29 +2,34 @@ version: '3'
 
 services:
   mariadb:
+    image: mariadb:latest
+    container_name: slurm_mariadb
+    environment:
+      - MYSQL_ROOT_PASSWORD=suslurm
+      - MYSQL_DATABASE=slurm_acct_db
+    networks:
+      - slurm-network
+    volumes:
+      - ./mariadb_docker/database:/var/lib/mysql
+    logging:
+        driver: none
     healthcheck:
       test: ["CMD", "mysql", "--version"]
       interval: 2s
       timeout: 2s
       retries: 5
       start_period: 2s
-    image: mariadb:latest
-    container_name: slurm_mariadb
-    networks:
-      - slurm-network
-    volumes:
-      - ./mariadb_docker/database:/var/lib/mysql
-    environment:
-      - MARIADB_USER=slurm-user
-      - MARIADB_PASSWORD=slurm
-      - MARIADB_ROOT_PASSWORD=suslurm
-    logging:
-        driver: none
 
   slurm_dbd:
     depends_on:
       mariadb:
         condition: service_healthy
+    healthcheck:
+      test: ["CMD", "sacctmgr", "list", "cluster"]
+      interval: 2s
+      timeout: 2s
+      retries: 5
+      start_period: 2s
     image: slurm_db_daemon
     container_name: slurm_db
     networks:
@@ -38,7 +43,7 @@ services:
   slurm_head:
     depends_on:
       slurm_dbd:
-        condition: service_started
+        condition: service_healthy
     image: slurm_head
     container_name: slurm_head
     networks:
