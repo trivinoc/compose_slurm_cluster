@@ -1,17 +1,21 @@
 version: '3'
 
+networks:
+  slurm-network:
+    driver: bridge
+
 services:
   mariadb:
     image: mariadb:latest
     container_name: slurm_mariadb
     environment:
+      - MYSQL_USER=slurm
       - MYSQL_ROOT_PASSWORD=suslurm
       - MYSQL_DATABASE=slurm_acct_db
     networks:
       - slurm-network
     volumes:
       - ./mariadb_docker/database:/var/lib/mysql
-
     healthcheck:
       test: ["CMD", "mysql", "--version"]
       interval: 2s
@@ -112,6 +116,3 @@ services:
     privileged: true
 
 
-networks:
-  slurm-network:
-    driver: bridge
