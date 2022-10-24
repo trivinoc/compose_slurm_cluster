@@ -1,21 +1,20 @@
 # compose_slurm_cluster
-### Basic description:
+
 This repo holds the docker compose file to create a slurm cluster in a docker container.
 
 It also contains a readme that gives you instructions on how to use it and some qof scripts.
 
 
 ## What to do?
-### What you need:
-
-#### **System requirements:**
+### **System requirements:**
   * docker, docker compose 1.29.2 at least, Cgroup
   
   * 10GB of storage
   
   * At least 4GB of ram
-  
-#### **Setup:**
+
+
+### **Setup:**
 
 * First thing you will want to do is edit the docker service file (mine is located at "/etc/systemd/system/multi-user.target.wants/docker.service", idk about you tho...) and change the "ExecStart" var value to
 ```
