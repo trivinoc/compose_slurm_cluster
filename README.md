@@ -8,7 +8,7 @@ It also contains a readme that gives you instructions on how to use it and some 
 ## What to do?
 ### What you need:
 
-First thing you will want to do is edit the file located at "/etc/systemd/system/multi-user.target.wants/docker.service" and change the "ExecStart" var value to
+First thing you will want to do is edit the docker service file (mine is located at "/etc/systemd/system/multi-user.target.wants/docker.service", idk about you tho...) and change the "ExecStart" var value to
 "ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --exec-opt native.cgroupdriver=systemd".
 It will tell docker to use Cgroup which is needed by the differents slurm containers.
 You may want to then, restart the docker service.
