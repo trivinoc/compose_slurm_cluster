@@ -16,10 +16,15 @@ It will tell docker to use Cgroup which is needed by the differents slurm contai
 You may want to then, restart the docker service.
 
 Then, download/clone this repo, it will hold all of your cluster's dockerfiles, shared folders, etc...
+```
+git clone https://github.com/sOmEoNe2lOvEgIt/compose_slurm_cluster.git
+```
 
 Finally, you will want to download/clone all of theses repos iside the previously cloned folder:
 
 ```
+cd ./compose_slurm_cluster
+
 git clone https://github.com/sOmEoNe2lOvEgIt/mariadb_docker.git
 
 git clone https://github.com/sOmEoNe2lOvEgIt/slurm_node.git
