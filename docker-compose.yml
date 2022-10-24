@@ -9,9 +9,9 @@ services:
     image: mariadb:latest
     container_name: slurm_mariadb
     environment:
-      - MARIADB_USER=slurm
+      - MARIADB_USER=root
       - MARIADB_ROOT_PASSWORD=suslurm
-        #- MARIADB_DATABASE=slurm_acct_db
+      - MARIADB_DATABASE=slurm_acct_db
     networks:
       - slurm-network
     volumes:
