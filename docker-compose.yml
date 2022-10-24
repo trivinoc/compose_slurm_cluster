@@ -16,6 +16,7 @@ services:
       - slurm-network
     volumes:
       - ./mariadb_docker/database:/var/lib/mysql
+    privileged: true
     healthcheck:
       test: ["CMD", "mysql", "--version"]
       interval: 2s
@@ -39,6 +40,7 @@ services:
       - slurm-network
     volumes:
       - ./slurm_conf:/etc/slurm
+    privileged: true
     hostname: slurm_db
 
 
