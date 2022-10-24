@@ -1,3 +1,5 @@
+#!/bin/bash
+set -e
 echo -e "\033[0;32m###########_Start build all_###########\033[0;0m"
 cd slurm_db_docker && ./build.sh && cd ..
 echo -e "\033[0;32m###########_End build slurm_db_###########\033[0;0m"
