@@ -19,7 +19,7 @@ services:
       retries: 5
       start_period: 2s
 
-  slurm_dbd:
+  slurm_db:
     depends_on:
       mariadb:
         condition: service_healthy
@@ -38,12 +38,12 @@ services:
     hostname: slurm_db
 
 
-  slurm_head:
+  slurm_controller:
     depends_on:
-      slurm_dbd:
+      slurm_db:
         condition: service_healthy
-    image: slurm_head
-    container_name: slurm_head
+    image: slurm_controller
+    container_name: slurm_controller
     networks:
       - slurm-network
     volumes:
