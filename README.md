@@ -1,6 +1,6 @@
 # compose_slurm_cluster
 ### Basic description:
-This repo holds the docker compose file to create a fake slurm cluster in docker.
+This repo holds the docker compose file to create a slurm cluster in a docker container.
 
 It also contains a readme that gives you instructions on how to use it and some qof scripts.
 
