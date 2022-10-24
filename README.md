@@ -7,9 +7,15 @@ It also contains a readme that gives you instructions on how to use it and some 
 
 ## What to do?
 ### What you need:
-First thing you will want to do is download/clone this repo, it will hold all of your cluster's dockerfiles, shared folders, etc...
 
-Then, you will want to do is download/clone all of theses repos iside the previously cloned folder:
+First thing you will want to do is edit the file located at "/etc/systemd/system/multi-user.target.wants/docker.service" and change the "ExecStart" var value to
+"ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --exec-opt native.cgroupdriver=systemd".
+It will tell docker to use Cgroup which is needed by the differents slurm containers.
+You may want to then, restart the docker service.
+
+Then, download/clone this repo, it will hold all of your cluster's dockerfiles, shared folders, etc...
+
+Finally, you will want to download/clone all of theses repos iside the previously cloned folder:
 
 https://github.com/sOmEoNe2lOvEgIt/mariadb_docker.git
 
@@ -23,7 +29,7 @@ https://github.com/sOmEoNe2lOvEgIt/slurm_conf.git
 
 This last repo holds the conf of all of the slurm daemons.
 
-DO NOT FORGET TO LAUNCH THE BUILD IMAGE SCRIPTS!! IT WILL BUILD IMAGES FOR THE DOCKERFILE!
+DO NOT FORGET TO LAUNCH THE BUILD IMAGE SCRIPT!! IT WILL BUILD ALL IMAGES FROM THE DOCKERFILE NEEDED BY THE DOCKER COMPOSE!
 
 ## Good job!
 
