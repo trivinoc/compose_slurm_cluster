@@ -13,7 +13,7 @@ It also contains a readme that gives you instructions on how to use it and some 
   
   10GB of storage
   
-  At least 8GB of ram
+  At least 4GB of ram
 
 First thing you will want to do is edit the docker service file (mine is located at "/etc/systemd/system/multi-user.target.wants/docker.service", idk about you tho...) and change the "ExecStart" var value to
 ```
