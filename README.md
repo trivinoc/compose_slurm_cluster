@@ -7,7 +7,9 @@ It also contains a readme that gives you instructions on how to use it and some 
 
 ## What to do?
 ### What you need:
-First thing you will want to do is download/clone all of theses repos in this folder:
+First thing you will want to do is download/clone this repo, it will hold all of your cluster's dockerfiles, shared folders, etc...
+
+Then, you will want to do is download/clone all of theses repos iside the previously cloned folder:
 
 https://github.com/sOmEoNe2lOvEgIt/mariadb_docker.git
 
@@ -17,18 +19,11 @@ https://github.com/sOmEoNe2lOvEgIt/slurm_head_docker.git
 
 https://github.com/sOmEoNe2lOvEgIt/slurm_db_daemon_docker.git
 
-You may also want to fork this repo :
-
 https://github.com/sOmEoNe2lOvEgIt/slurm_conf.git
 
-This last repo holds the conf of all of the slurm daemons. If you want to use your own to add/remove nodes or simply change the conf, you may change all of the slurm conf folders in each of the slurm daemons folders. The slurm conf is always located in the etc folder. You dont have to touch the pull_conf script as it will stil function normally if your folder tree is correct.
+This last repo holds the conf of all of the slurm daemons.
 
-DO NOT FORGET TO START THE SETUP CONF THEN BUILD IMAGE SCRIPTS, IT WILL UPDATE THE CONF AS THE SAME ONE ON EVERY DAEMON WHICH IS NECESSARY FOR SLURM TO WORK AND BUILD IMAGES FOR THE DOCKERFILE!
-
-### What do you do?
-Ok! Now that you have all that you need, you will need to update the paths of the shared volumes in the docker compose file as theses are hard coded into the file and your path may vary depending in wich folder you put the repo in.
-
-For each of the slurm nodes, there is a shared volume to your folder containing cgroup on your computer (as such  */sys/fs/cgroup:/sys/fs/cgroup:ro*). If you dont have this folder, either, install/update cgroup, either change this path to the one matching on your distribution. (I cant tell you where it is, sadly, i am not a wizzard)
+DO NOT FORGET TO LAUNCH THE BUILD IMAGE SCRIPTS!! IT WILL BUILD IMAGES FOR THE DOCKERFILE!
 
 ## Good job!
 
