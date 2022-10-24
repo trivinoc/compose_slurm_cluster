@@ -52,4 +52,8 @@ DO NOT FORGET TO LAUNCH THE BUILD IMAGE SCRIPT!! IT WILL BUILD ALL IMAGES FROM T
 
 If you are reading this, it means that you have either completed the previous steps or you have skipped the whole thing (in which case i wish you good luck...).
 
-Now, theoricaly, you can start up this whole thing by going to the root of the repo then do "docker compose up". It should cleany start everything. If it does not, try checking the previous steps. If it still does not work (and is then my fault), you can submit an issue that i will try to adress/fix.
+Now, theoricaly, you can start up this whole thing by going to the root of the repo then do 
+```
+docker compose up
+```
+It should cleany start everything. If it does not, try checking the previous steps. If it still does not work (and is then my fault), you can submit an issue that i will try to adress/fix.
