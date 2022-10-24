@@ -1,9 +1,5 @@
 elasticsearch-data
 kibana-data
 mariadb_docker
-slurm_conf
-slurm_controller_docker
-slurm_node_docker
-slurm_db_docker
 node_logs
 nodes_cgroups
