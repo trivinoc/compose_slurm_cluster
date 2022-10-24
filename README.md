@@ -33,7 +33,7 @@ The slurm_conf directory holds the configuration files of all of the slurm daemo
 systemctl status docker
 ```
 
-* Build the images with the corresponding script.
+* Move into the compose_slurm_cluster directory and build the images with the corresponding script.
 ```
 ./build_all_images.sh
 ```
