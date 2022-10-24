@@ -29,7 +29,7 @@ services:
       timeout: 2s
       retries: 5
       start_period: 2s
-    image: slurm_db_daemon
+    image: slurm_db
     container_name: slurm_db
     networks:
       - slurm-network
