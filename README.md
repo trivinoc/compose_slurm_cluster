@@ -43,3 +43,22 @@ Now, theoricaly, you can start up the cluster by going to the root of the reposi
 docker compose up
 ```
 It should cleany start everything. If it does not, try checking the previous steps.
+
+--------------------
+
+If at the time of building the images you fall into this error :
+
+```
+ ---> Running in b83712019e1b
+ cgroups: cgroup mountpoint does not exist: unknown
+```
+then run these commands :
+
+```
+sudo mkdir /sys/fs/cgroup/systemd
+sudo mount -t cgroup -o none,name=systemd cgroup /sys/fs/cgroup/systemd
+
+# Add to /etc/fstab
+cgroup    /sys/fs/cgroup/systemd    cgroup    defaults
+```
+
